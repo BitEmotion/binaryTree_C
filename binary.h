@@ -116,12 +116,12 @@ void deleteAllTree(TreeNode_t* root) {
 void deleteTree(TreeNode_t* root, TreeNode_t* targetTree)
 {
 	TreeNode_t* p_currentTree = root;
-	TreeNode_t* p_targetDeletedTreeCurrent = targetTree;
-	TreeNode_t* p_parentCurrentTree;
+	TreeNode_t* p_targetTree = targetTree;
+	TreeNode_t* p_parentTree;
 	enqueue(p_currentTree);
 	while (p_currentTree = dequeue())
 	{
-		if (p_currentTree->value != p_targetDeletedTreeCurrent->value)
+		if (p_currentTree->value != p_targetTree->value)
 		{
 			goto CHECK_CURRENT_TREE_LEFT_OR_LIGHT_NOT_NULL_ENQUEUE;
 		}
@@ -129,23 +129,23 @@ void deleteTree(TreeNode_t* root, TreeNode_t* targetTree)
 		{
 			checkIsDataAndResetQueue();
 
-			int targetNum = p_targetDeletedTreeCurrent->value;
+			int targetNum = p_targetTree->value;
 
 			enqueue(p_currentTree);
 			while (p_currentTree = dequeue())
 			{
-				p_parentCurrentTree = p_currentTree->parent;
+				p_parentTree = p_currentTree->parent;
 
 				//Node to be deleted is leaf
 				if (p_currentTree->left == NULL && p_currentTree->right == NULL)
 				{
-					if (p_parentCurrentTree->left == p_currentTree)
+					if (p_parentTree->left == p_currentTree)
 					{
-						p_parentCurrentTree->left = NULL;
+						p_parentTree->left = NULL;
 					}
 					else
 					{
-						p_parentCurrentTree->right = NULL;
+						p_parentTree->right = NULL;
 					}
 					goto FINISH;
 				}
@@ -159,24 +159,24 @@ void deleteTree(TreeNode_t* root, TreeNode_t* targetTree)
 				{
 					if (p_currentTree->left != NULL && p_currentTree->right == NULL)
 					{
-						if (p_parentCurrentTree->left == p_currentTree)
+						if (p_parentTree->left == p_currentTree)
 						{
-							p_parentCurrentTree->left = p_currentTree->left;
+							p_parentTree->left = p_currentTree->left;
 						}
 						else
 						{
-							p_parentCurrentTree->right = p_currentTree->left;
+							p_parentTree->right = p_currentTree->left;
 						}
 					}
 					else
 					{
-						if (p_parentCurrentTree->left == p_currentTree)
+						if (p_parentTree->left == p_currentTree)
 						{
-							p_parentCurrentTree->left = p_currentTree->right;
+							p_parentTree->left = p_currentTree->right;
 						}
 						else
 						{
-							p_parentCurrentTree->right = p_currentTree->right;
+							p_parentTree->right = p_currentTree->right;
 						}
 					}
 					goto FINISH;
@@ -187,7 +187,7 @@ void deleteTree(TreeNode_t* root, TreeNode_t* targetTree)
 		{
 			TreeNode_t* p_tempTree = p_currentTree->right;
 			TreeNode_t* p_replacedTree = p_tempTree;
-			p_parentCurrentTree = p_currentTree->parent;
+			p_parentTree = p_currentTree->parent;
 			int currentValue = p_currentTree->value;
 			int minValue = p_tempTree->value;
 
@@ -211,17 +211,17 @@ void deleteTree(TreeNode_t* root, TreeNode_t* targetTree)
 				{
 					if (p_currentTree->right == p_replacedTree) {
 						p_tempTree = p_currentTree->left;
-						if (p_parentCurrentTree->left == p_currentTree)
+						if (p_parentTree->left == p_currentTree)
 						{
 							p_currentTree = p_replacedTree;
-							p_parentCurrentTree->left = p_currentTree;
+							p_parentTree->left = p_currentTree;
 						}
 						else
 						{
 							p_currentTree = p_replacedTree;
-							p_parentCurrentTree->right = p_currentTree;
+							p_parentTree->right = p_currentTree;
 						}
-						p_currentTree->parent = p_parentCurrentTree;
+						p_currentTree->parent = p_parentTree;
 						p_currentTree->left = p_tempTree;
 					}
 					else {
