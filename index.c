@@ -22,12 +22,12 @@ int main(void)
 		InsertTree(p_treeNodePool, numArray[i]);
 	}
 
-	traverseAllTree(p_treeNodePool);
+	TraverseAllTree(p_treeNodePool);
 	DeleteTree(p_treeNodePool, 9);
 
 	printf("-------------------------- \n");
 
-	traverseAllTree(p_treeNodePool);
+	TraverseAllTree(p_treeNodePool);
 
 	return 0;
 }

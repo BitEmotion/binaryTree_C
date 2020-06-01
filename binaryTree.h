@@ -23,8 +23,8 @@ Node* dequeue(void);
 
 int isEmpty(void);
 
-void checkIsData_And_resetQueue(void);
+void CheckIsData_And_resetQueue(void);
 void InsertTree(Node* root, int paramValue);
-void traverseAllTree(Node* root);
+void TraverseAllTree(Node* root);
 void DeleteAllTree(Node* root);
 void DeleteTree(Node* root, int paramValue);

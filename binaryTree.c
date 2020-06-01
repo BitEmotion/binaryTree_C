@@ -29,7 +29,7 @@ int isEmpty(void)
 	return (queue_numCount == 0);
 }
 
-void checkIsData_And_resetQueue(void)
+void CheckIsData_And_resetQueue(void)
 {
 	while (queue_numCount != 0)
 	{
@@ -67,7 +67,7 @@ void InsertTree(Node* root, const int paramValue)
 	}
 }
 
-void traverseAllTree(Node* root) 
+void TraverseAllTree(Node* root) 
 {
 	Node** pp_currentNode = &root;
 
@@ -92,7 +92,7 @@ void traverseAllTree(Node* root)
 		};
 	}
 
-	checkIsData_And_resetQueue();
+	CheckIsData_And_resetQueue();
 }
 
 void DeleteAllTree(Node* root)
@@ -117,7 +117,7 @@ void DeleteAllTree(Node* root)
 		//p_currentNode -> value = NULL_INT;
 	}
 
-	checkIsData_And_resetQueue();
+	CheckIsData_And_resetQueue();
 }
 
 void DeleteTree(Node* root, const int paramValue)
@@ -134,7 +134,7 @@ void DeleteTree(Node* root, const int paramValue)
 		}
 		else
 		{
-			checkIsData_And_resetQueue();
+			CheckIsData_And_resetQueue();
 
 			int targetNum = paramValue;
 
@@ -278,7 +278,7 @@ void DeleteTree(Node* root, const int paramValue)
 
 	FINISH:
 	{
-		checkIsData_And_resetQueue();
+		CheckIsData_And_resetQueue();
 	}
 
 	return;
