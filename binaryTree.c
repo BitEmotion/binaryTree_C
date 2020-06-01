@@ -114,7 +114,6 @@ void DeleteAllTree(Node* root)
 			p_currentNode->p_right = NULL;
 			free(p_currentNode->p_right);
 		}
-		//p_currentNode -> value = NULL_INT;
 	}
 
 	CheckIsData_And_resetQueue();
